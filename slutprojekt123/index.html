@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Slutprojekt</title>
+    <link rel="stylesheet" href="style.css">
+    <style media="screen">
+        ::selection {
+            background-color: rgba(39, 39, 39, 0.849);
+            color: rgb(44, 44, 44);
+          }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="headerlink">Komponenter</a>
+    </header>
+    <div class="container">
+      <a href=""><button class="KOMP GPU">GPU</button></a>
+      <a href=""><button class="KOMP CPU">CPU</button></a>
+      <a href=""><button class="KOMP CPUKYL">CPU KYLNING</button></a>
+      <a href=""><button class="KOMP PSU">PSU</button></a>
+      <a href=""><button class="KOMP RAM">RAM</button></a>
+      <a href=""><button class="KOMP CHASSI">CHASSI</button></a>
+      <a href=""><button class="KOMP LAGR">HDD/SSD</button></a>
+      <a href=""><button class="KOMP MODR">MODERKORT</button></a>
+    </div>
+    <div>
+      <script src="three.min.js"></script>
+      <script src="GLTFLoader.js"></script>
+      <script src="OrbitControls.js"></script>  
+      <script>
+        let scene, camera, renderer, controls, light, model;
+  
+        function init() {
+  
+          scene = new THREE.Scene();
+          scene.background = new THREE.Color(0x1E1E1E);
+         /* scene.background = new THREE.CubeTextureLoader()
+            .setPath( 'skybox/' )
+            .load( [
+              'posx.jpg',
+              'negx.jpg',
+              'posy.jpg',
+              'negy.jpg',
+              'posz.jpg',
+              'negz.jpg'
+            ] );*/
+  
+          camera = new THREE.PerspectiveCamera(50,window.innerWidth/window.innerHeight,1,5000);
+          camera.position.set(-10,0,0);
+          controls = new THREE.OrbitControls(camera);
+
+          window.addEventListener("resize", () => {
+            renderer.setSize(window.innerWidth,window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+
+            camera.updateProjectMatrix();
+          })
+
+
+         // scene.add( new THREE.AxesHelper(500));
+  
+          light = new THREE.SpotLight(0xffa95c,10);
+          light.position.set(-50,50,50);
+          light.castShadow = true;
+          light.shadow.bias = -0.0001;
+          light.shadow.mapSize.width = 1024*4;
+          light.shadow.mapSize.height = 1024*4;
+          scene.add( light );
+  
+          hemiLight = new THREE.HemisphereLight(0xffeeb1, 0x080820, 10);
+          scene.add(hemiLight);
+          renderer = new THREE.WebGLRenderer();
+          renderer.toneMapping = THREE.ReinhardToneMapping;
+          renderer.toneMappingExposure = 2.3;
+          renderer.setSize(window.innerWidth,window.innerHeight);
+          renderer.shadowMap.enabled = true;
+          document.body.appendChild(renderer.domElement);
+          
+          new THREE.GLTFLoader().load('model/scene.gltf', result => { 
+            model = result.scene.children[0]; 
+            model.position.set(0,0,0);
+            model.traverse(n => { if ( n.isMesh ) {
+              n.castShadow = true; 
+              n.receiveShadow = true;
+              if(n.material.map) n.material.map.anisotropy = 1; 
+            }});
+            scene.add(model);
+  
+            animate();
+          });
+        }
+        function animate() {
+          renderer.render(scene,camera);
+          light.position.set( 
+            camera.position.x - 100,
+            camera.position.y + 10,
+            camera.position.z + 10,
+          );
+          requestAnimationFrame(animate);
+        }
+        init();
+  
+      </script>
+</script>
+</div>
+    <main class="maincontent">
+        <div class="row" id="r1">
+            <div class="col-1-1">
+                <div class="border margin padding">Övrigt</div>
+            </div>
+    </main>
+
+</body>
+</html>
