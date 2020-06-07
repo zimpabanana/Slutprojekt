@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Moderkort</title>
+</head>
+<body>
+    <div class="flytta"><a href="../main/index.html" class="headerlink"><img src="../images/datordegblå.png"></a>
+        <div class="container">
+            <button onclick="window.location.href='../page_2_gpu/index.html'" class="KOMP GPU">GPU</button>
+            <button onclick="window.location.href='../page_1_processor/index.html'" class="KOMP CPU">CPU</button>
+            <button onclick="window.location.href='../page_3_kylning/index.html'" class="KOMP KYLNING">KYLNING</button>
+            <button onclick="window.location.href='../page_4_PSU/index.html'" class="KOMP PSU">PSU</button>
+            <button onclick="window.location.href='../page_5_ram/index.html'" class="KOMP RAM">RAM</button>
+            <button onclick="window.location.href='../page_6_chassi/index.html'" class="KOMP CHASSI">CHASSI</button> 
+            <button onclick="window.location.href='../page_7_lagring/index.html'" class="KOMP LAGRING">LAGRING</button>
+            <button onclick="window.location.href='../page_8_moderkort/index.html'" class="KOMP MODERKORT">MODERKORT</button>
+        </div>
+        </div>
+    <header>
+        <nav></nav>
+    </header>
+
+        <main>
+        <p>
+            En essentiell komponent i alla datorer är moderkorten som håller samman alla andra komponenter så att den fungerar alls. En sådan komponent som moderkorten har många delar som man ofta inte tänker på som konsument, men som ändå är så fundamentala för nästan all hårdvara.
+        </p>
+        <p>
+            En aspekt av moderkort som är viktig att förstå för att veta mer om moderkort är deras formfaktor som påverkar både hur moderkort ser ut och fungerar. Några faktorer som påverkar moderkortens formfaktorer är: 
+        </p>
+        <ul>
+            <li>
+                Processorsockel, som är exakt vad det låter som, den del på moderkortet där man sätter processorer så att den ska få elektricitet för att göra sitt syfte. Beroende vilka processorer på marknaden som finns så tillverkas olika sorters sockeltyper. 
+            </li>
+            <li>
+                Chipset, som består av två delar nordbryggan (northbridge) och sydbryggan (southbridge), är en del som låter CPU:n “prata” med andra delar av moderkortet. 
+            </li>
+            <li>
+                BIOS (Basic Input/ Output System), vilket är ett chip som kontrollerar att alla de mest basiska funktionerna fungerar, det här görs då man startar om eller sätter på datorn.
+            </li>
+        </ul>
+        <p>
+            En annan viktig del av moderkort är deras bussar och hastigheten av dem, som mäts i MHz, det här är oftast mätt på FSB (Front Side Bus) vars hastighet kan påverka datorernas prestanda. 
+        </p>
+        <p>
+            Utöver FSB så finns det en hel del olika bussar med olika uppgifter såsom “back side bus” som kopplar CPU:n till det externa cache minnet. 
+            “Memory bus” som kopplar nordbryggan till minnet (RAM). 
+            IDE eller ATA buss som de olika diskar kopplas till via sydbryggan. 
+            PCI som kopplar PCI till sydbryggan, PCI Express; PCI-E som sannerligen kommer byta ut både AGP och PCI på grund av att den är mycket snabbare.
+        </p>
+        <img src="../images/MODERKORTTYPER.png">
+        </main>
+      </div>
+      
+      <footer>
+          <h2>Källor:</h2>
+          <a href="https://computer.howstuffworks.com/motherboard.htm">https://computer.howstuffworks.com/motherboard.htm</a><br>
+          <a href="https://techterms.com/definition/motherboard">https://techterms.com/definition/motherboard</a>
+      </footer>
+</body>
+</html> 

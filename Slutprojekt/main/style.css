@@ -1,0 +1,102 @@
+:root {
+    --color-main-bg: rgb(48, 48, 48);
+    --color-pri: #494949;
+    --color-white: #fff;
+    --color-black: #000;
+    --color-grey: #3a3a3a;
+}
+
+img {
+    width: 20%;
+    height: auto;
+    padding-bottom: 100px;
+}
+
+.center {
+    width: 100%;
+}
+
+
+button {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+}
+
+html {
+    box-sizing: border-box;
+    background: var(--color-main-bg);
+    font-family: 'Roboto', sans-serif;
+}
+
+div {
+    grid-column: 1/-1;
+    grid-row: 1;
+    height: fit-content;
+    padding-top: 5px;
+    background-color: rgb(48, 48, 48);
+    top: 0px;
+    width: 100%;
+
+}
+
+body {
+    background-color: rgb(48, 48, 48);
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 300px auto auto;    
+}
+
+header{
+    text-align: center;
+}
+
+script {
+    width: 100%;
+    max-width: 1920px;
+}
+
+.container{
+    text-align: center;
+    margin-top: 0px;    
+    position: absolute;
+    padding-top: 5px;
+}
+
+.KOMP{
+    border: 2px solid rgb(197, 197, 197);
+    background: none;
+    padding: 10px 50px;
+    margin: 10px;
+    color: rgb(197, 197, 197);
+    cursor: pointer;
+    border-radius: 50px;
+}
+.KOMP:hover{
+    background: rgb(197, 197, 197);
+    color: rgb(48, 48, 48);
+}
+
+footer {
+    grid-column: 1/-1;
+    grid-row: 3;
+    height: fit-content;
+    padding-bottom: 30px;
+    background-color: rgb(24, 84, 144);
+    bottom: 0px;
+    width: 100%;
+}
+
+h2 {
+    margin-left: 20px;
+}
+
+a {
+    color: rgba(140,140,140,0.9);
+    margin-left: 20px;
+}
+
+a:hover {
+    color: white;
+}

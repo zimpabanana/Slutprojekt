@@ -1,3 +1,24 @@
+html {
+    font-family: 'Roboto', sans-serif;
+}
+button{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+}
+
+img {
+    width: 50%;
+    height: auto;
+    margin: 5px;
+}
+
+.flytta {
+    width: 100%;
+    height: 100px;
+    position: sticky;
+    top: 0px;
+}
+
 body {
     background-color: rgba(48,48,48,1);
     margin: 0;
@@ -14,17 +35,44 @@ h1{
     font-size: 40px;
 }
 
+.container{
+    text-align: center;
+    margin-top: 50px; 
+    width: 100px;
+    margin-top: 10px;
+    height: 30px;
+}
+
+.KOMP{
+    border: 2px solid rgb(197, 197, 197);
+    background: none;
+    padding: 10px 50px; 
+    margin: 10px;
+    color: rgb(197, 197, 197);
+    cursor: pointer;
+    border-radius: 50px;
+    width: 200%;
+
+}
+
+.KOMP:hover{
+    background: rgb(197, 197, 197);
+    color: rgb(48, 48, 48);
+}
+.PSU {
+    background-color: rgb(197, 197, 197);
+    color: rgb(48, 48, 48);
+}
+
 header { 
     grid-column: 2;
     grid-row: 1;
     color: rgb(24, 84, 144);
-    background-image: url("https://images.unsplash.com/photo-1529961172671-d48e8280f846?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80");
+    background-image: url("../images/psubild.png");
     background-repeat: no-repeat;
+    background-size: 100%;
 
     padding-bottom: 450px;
-}
-p:first-child{
-    color: rgb(200,200,200);
 }
 
 main {
@@ -41,14 +89,23 @@ main {
 footer {
     grid-column: 1/-1;
     grid-row: 3;
-    height: 130px;
+    height: fit-content;
+    padding-bottom: 10px;
     background-color: rgb(24, 84, 144);
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+h2 {
+    margin-left: 20px;
 }
 
 a {
-    color: rgb(200, 200, 200);
+    color: rgba(140,140,140,0.9);
+    margin-left: 20px;
 }
 
 a:hover {
-    color: red;
+    color: white;
 }

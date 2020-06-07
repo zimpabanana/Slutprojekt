@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Main</title>
+    <link rel="stylesheet" href="style.css">
+    <style media="screen">
+        ::selection {
+            background-color: rgba(39, 39, 39, 0.849);
+            color: rgb(44, 44, 44);
+          }
+
+    </style>
+</head>
+<body>
+  
+    <div class="container">
+      <a href="../main/index.html" class="center"><img src="../images/datordegblå.png"></a>
+      <button onclick="window.location.href='../page_2_gpu/index.html'" class="KOMP">GPU</button>
+      <button onclick="window.location.href='../page_1_processor/index.html'" class="KOMP">CPU</button>
+      <button onclick="window.location.href='../page_3_kylning/index.html'" class="KOMP">KYLNING</button>
+      <button onclick="window.location.href='../page_4_PSU/index.html'" class="KOMP">PSU</button>
+      <button onclick="window.location.href='../page_5_ram/index.html'" class="KOMP">RAM</button>
+      <button onclick="window.location.href='../page_6_chassi/index.html'" class="KOMP">CHASSI</button> 
+      <button onclick="window.location.href='../page_7_lagring/index.html'" class="KOMP">LAGRING</button>
+      <button onclick="window.location.href='../page_8_moderkort/index.html'" class="KOMP">MODERKORT</button>
+    </div>
+    <div>
+      <script src="three.min.js"></script>
+      <script src="GLTFLoader.js"></script>
+      <script src="OrbitControls.js"></script> 
+      <script>
+        let scene, camera, renderer, controls, light, model;
+  
+        function init() {
+  
+          scene = new THREE.Scene();
+          scene.background = new THREE.Color(0x1E1E1E);
+         /* scene.background = new THREE.CubeTextureLoader()
+            .setPath( 'skybox/' )
+            .load( [
+              'posx.jpg',
+              'negx.jpg',
+              'posy.jpg',
+              'negy.jpg',
+              'posz.jpg',
+              'negz.jpg'
+            ] );*/
+  
+          camera = new THREE.PerspectiveCamera(50,window.innerWidth/window.innerHeight,1,5000);
+          camera.position.set(-10,0,0);
+          controls = new THREE.OrbitControls(camera);
+
+          window.addEventListener("resize", () => {
+            renderer.setSize(window.innerWidth,window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+
+            camera.updateProjectMatrix();
+          })
+
+
+         // scene.add( new THREE.AxesHelper(500));
+  
+          light = new THREE.SpotLight(0xffa95c,10);
+          light.position.set(-50,50,50);
+          light.castShadow = true;
+          light.shadow.bias = -0.0001;
+          light.shadow.mapSize.width = 1024*4;
+          light.shadow.mapSize.height = 1024*4;
+          scene.add( light );
+  
+          hemiLight = new THREE.HemisphereLight(0xffeeb1, 0x080820, 10);
+          scene.add(hemiLight);
+          renderer = new THREE.WebGLRenderer();
+          renderer.toneMapping = THREE.ReinhardToneMapping;
+          renderer.toneMappingExposure = 2.3;
+          renderer.setSize(window.innerWidth,window.innerHeight);
+          renderer.shadowMap.enabled = true;
+          document.body.appendChild(renderer.domElement);
+          
+          new THREE.GLTFLoader().load('model/scene.gltf', result => { 
+            model = result.scene.children[0]; 
+            model.position.set(0,0,0);
+            model.traverse(n => { if ( n.isMesh ) {
+              n.castShadow = true; 
+              n.receiveShadow = true;
+              if(n.material.map) n.material.map.anisotropy = 1; 
+            }});
+            scene.add(model);
+  
+            animate();
+          });
+        }
+        function animate() {
+          renderer.render(scene,camera);
+          light.position.set( 
+            camera.position.x - 100,
+            camera.position.y + 10,
+            camera.position.z + 10,
+          );
+          requestAnimationFrame(animate);
+        }
+        init();
+  
+      </script>
+</script>
+</div>
+<footer>
+  <h2>Källor:</h2>
+  <a href="https://threejs.org/">https://threejs.org/</a>
+</footer>
+</body>
+</html>
